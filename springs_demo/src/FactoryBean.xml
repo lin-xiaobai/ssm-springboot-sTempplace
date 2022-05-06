@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    工厂bean  创建对象-->
+    <!--    单实例：在栈中只创建一个对象 ，spring中默认为单实例  配置 scope 决定：单实例singleton和多实例(prototype)-->
+    <!--  singleton,在加载spring配置文件时候就会创建单实例对象 -->
+    <!--  prototype，不是在加载spring配置文件时候创建对象，在调用getBean方法时候创建多实例对象  -->
+    <bean id="factory" class="com.spring5.FactoryBean.myBean" scope="prototype">
+
+    </bean>
+
+</beans>

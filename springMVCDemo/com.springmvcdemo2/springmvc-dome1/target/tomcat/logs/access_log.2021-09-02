@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [02/Sep/2021:21:13:08 +0800] "GET /springmvcdemo2 HTTP/1.1" 302 - http-bio-8888-exec-1 0
+0:0:0:0:0:0:0:1 - - [02/Sep/2021:21:13:08 +0800] "GET /springmvcdemo2/ HTTP/1.1" 200 194 http-bio-8888-exec-3 342
+0:0:0:0:0:0:0:1 - - [02/Sep/2021:21:13:08 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8888-exec-4 0
+0:0:0:0:0:0:0:1 - - [02/Sep/2021:21:13:20 +0800] "GET /springmvcdemo2/ HTTP/1.1" 200 194 http-bio-8888-exec-6 6
+0:0:0:0:0:0:0:1 - - [02/Sep/2021:21:13:22 +0800] "GET /springmvcdemo2/ HTTP/1.1" 200 194 http-bio-8888-exec-8 3
+0:0:0:0:0:0:0:1 - - [02/Sep/2021:21:13:24 +0800] "GET /springmvcdemo2/ HTTP/1.1" 200 194 http-bio-8888-exec-10 6

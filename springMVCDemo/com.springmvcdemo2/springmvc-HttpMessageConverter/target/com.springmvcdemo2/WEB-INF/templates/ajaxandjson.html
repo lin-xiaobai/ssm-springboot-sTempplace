@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+    <form action="#">
+        <input type="text" id="idn" name="username" placeholder="请输入id">
+        <span id="msg"></span><br>
+        <input type="text" name="password" placeholder="请输入您的密码"><br>
+        <input type="submit">
+    </form>
+</body>
+
+<script>
+    $(function () {
+        // blur失去焦点事件
+        $("#idn").blur(function () {
+            var username=$(this).val();
+            //获取span元素
+            var msg = $("#msg");
+            //当用户名为空时
+            if(username==''){
+                return false;
+            }
+
+            // alert(username);
+            //ajax post请求 ，json数据格式  服务器响应的数据data
+            $.post("ax",{"username":username},function (data) {
+                alert(data);
+                //data表示服务器响应的数据 即map集合
+                //直接通过date.map集合中的key获取value值
+                if(data.exit){
+                    //将添加span中的内容
+                    msg.html(data.message);
+                    msg.css("color","red");
+                }else{
+                    msg.html(data.message);
+                    msg.css("color","yellow");
+                }
+            //    指定响应的数据为json数据
+            },"json");
+        });
+    });
+</script>
+
+</html>

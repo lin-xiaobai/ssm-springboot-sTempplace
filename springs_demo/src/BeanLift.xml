@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--配置bean的生命周期 需要配置 bean的初始化的方法和bean的销毁的方法（-->
+    <!--    如果设置单实例（默认）scope="singleton" 则由spring容器对其生命周期进行管理，
+     如果为多实例 scope="prototype"  则在创建该bean后将生命周期管理权交由调用者进行管理
+     -->
+    <bean id="stu" class="com.spring5.BeanLift.stu" init-method="initMethod" destroy-method="destoryMthod">
+        <property name="name" value="zs"></property>
+    </bean>
+
+    <!--    配置后置处理器-->
+    <bean id="mybeanpost" class="com.spring5.BeanLift.afterChuliqi"></bean>
+</beans>

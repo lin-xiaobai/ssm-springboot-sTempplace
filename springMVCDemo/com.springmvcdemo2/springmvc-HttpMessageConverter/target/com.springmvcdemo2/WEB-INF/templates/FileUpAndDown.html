@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>文件下载与上传</title>
+</head>
+<body>
+<!--下载功能-->
+<a th:href="@{/testDown}">从服务器中下载1.png图片资源</a>
+<!--上传功能 1.只能通过post请求，和设置enctype-->
+<!--enctype="multipart/form-data" 表示form表单中数据不是 通过name=value的形式传输到服务器 而且是以二进制的形式传输到服务器-->
+<!--请求方式和enctype配置好了，服务器才能接受文件-->
+<form th:action="@{/testUp}" method="post" enctype="multipart/form-data">
+<!--   文件域 name的属性值为photo，需要与后端控制器的控制器方法上的形参一致 -->
+    头像：<input type="file" name="photo"><br>
+    <input type="submit" value="上传">
+
+</form>
+</body>
+</html>

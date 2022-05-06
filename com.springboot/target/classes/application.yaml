@@ -1,0 +1,87 @@
+#同以前的properties用法
+#一、yaml是一种标记语言 非常适合用来做以数据为中心的配置文件
+#二、基本语法
+#  ● key: value；kv之间有空格
+#  ● 大小写敏感
+#  ● 使用缩进表示层级关系
+#  ● 缩进不允许使用tab，只允许空格
+#  ● 缩进的空格数不重要，只要相同层级的元素左对齐即可
+#  ● '#'表示注释
+#  ● 字符串无需加引号，如果要加，''与""表示字符串内容 会被 转义/不转义
+
+
+#三、● 字面量：单个的、不可再分的值。date、boolean、string、number、null
+#k: v
+#四、● 对象：键值对的集合。map、hash、set、object
+#行内写法：  k: {k1:v1,k2:v2,k3:v3}
+##或
+#k:
+#  k1: v1
+#    k2: v2
+#    k3: v3
+#五、数组：一组按次序排列的值。array、list、queue
+#行内写法：  k: [v1,v2,v3]
+##或者
+#k:
+# - v1  表示第一个元素
+# - v2  表示第二个元素
+# - v3  表示第三个元素
+#案例是person类和pett类
+#使用yaml表示person和pett对象，并且为属性赋值
+
+person:
+#  字面值
+#  k和v之间需要空格
+#  双引号里面的 \n是转义符 会作为换行输出
+#  单引号里面的\n 是作为字符串输出
+  username: "zhangsan \n 战三"
+  boss: false
+#  日期模式是固定这样的
+  birth: 2019/12/12 20:12:33
+  age: 18
+
+
+#  对象
+  pet:
+    name: tomcat
+    weight: 23.4
+#  数组:两种方式：
+  #第一种：使用中括号
+  interests: [篮球,游泳]
+#  第二种
+#  interests:
+#    - 篮球
+#    - 游泳
+
+#  集合
+#  List集合可以与数组的格式一样
+  animal:
+    - jerry
+    - mario
+
+#  map集合 具有key和value 两种方式 Map<String, Object> score;
+#  方式一：使用大括号
+# score: {english: 80,math: 90}
+#  方式二
+#  （1）value是一个字面值
+  score:
+    english: 80
+#   (2)value是一个对象或者集合
+    math:
+      first: 80
+      second: 90
+    chinese: [11,12,13]
+
+#  set集合 Set<Double> salarys;
+  salarys: [3999,4999.98,5999.99]
+
+#  map集合 Map<String, List<Pett>>  value是一个list集合
+  allPets:
+    sick:
+      - {name: tom}
+      - {name: jerty,weight: 47}
+    heigth: [{name: mario,weight: 47}]
+
+
+
+

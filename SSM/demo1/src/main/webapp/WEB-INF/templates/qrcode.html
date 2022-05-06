@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" th:src="@{/static/js/qrcode.js}"></script>
+</head>
+<body>
+<div id="qrcode"></div>
+<script>
+    new QRCode("qrcode", {
+        //在text中设置文本或者访问地址
+        text: "http://www.itcast.cn",
+        width: 200,
+        height: 200,
+    });
+</script>
+</body>
+</html>

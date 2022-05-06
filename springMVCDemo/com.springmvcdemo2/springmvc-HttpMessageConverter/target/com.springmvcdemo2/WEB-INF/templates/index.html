@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+    <form th:action="@{/testRequestBody}" method="post">
+        <input type="text" name="username">
+        <input type="text" name="password">
+        <input type="submit"value="测试使用@RequestBody注解获取请求报文信息">
+    </form>
+    <form th:action="@{/testRequestEntity}" method="post">
+        <input type="text" name="username">
+        <input type="text" name="password">
+        <input type="submit"value="测试使用RequestEntity类型获取请求报文信息体">
+    </form>
+<a th:href="@{/testResponse}">测试以servlet响应浏览器数据</a>
+<a th:href="@{/testResponseBody}">测试springmvc中@ResponseBody注解响应浏览器数据</a>
+<a th:href="@{/testResponseBodybyJson}">测试springmvc中@ResponseBody注解中以json数据格式的形式响应浏览器数据</a>
+
+<!--springMVC中处理ajax-->
+<!--通过超链接发送一个ajax请求-->
+<!--    通过vue容器和使用vue版本的ajax-->
+<!--    通过vue来绑定超链接与ajax
+因为a标签的默认行为是先执行后发送的，而且请求方式是get请求-->
+    <div id="app">
+<!--        给超链接绑定一个点击事件-->
+<a @click="testAxios" th:href="@{/testVueAxios}">springmvc处理vue版本的ajax</a>
+    </div>
+<!--连接vue.js和axios.min.js-->
+<script type="text/javascript" th:src="@{/static/js/vue.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/axios.min.js}"></script>
+
+    <script type="text/javascript">
+    // 创建一个vue
+    new Vue({
+        // 绑定div容器
+        el:"#app",
+        //处理点击事件
+        methods:{
+        //    设置点击事件的函数 event:表示当前点击的事件
+            testAxios:function (event) {
+                axios({
+                    method:"post",
+                    //获取当前事件的href属性
+                    // params当前传输到服务器的数据
+                    url:event.target.href,
+                    params:{
+                        username:"admin",
+                        password:"123456"
+                    }
+                // then处理ajax成功后的事件 response表示当前响应的数据
+                }).then(function(response){
+                    //response.data:表示当前响应的数据
+                    alert(response.data);
+                });
+                // 取消当前事件(超链接)的默认行为
+                event.preventDefault();
+            }
+        }
+
+    });
+
+
+</script>
+</body>
+</html>

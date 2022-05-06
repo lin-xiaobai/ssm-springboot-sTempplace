@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--指定接口 即创建BolosMapper实现类-->
+<mapper namespace="mybatis.dao.BlogMapper">
+<!--    在当前mapper中开启二级缓存 即全局缓存-->
+<!--    可以自定义配置-->
+    <cache
+        eviction="FIFO"
+        flushInterval="60000"
+        size="512"
+        readOnly="true"/>
+
+<!--    手动添加缓存  useCache="true"-->
+    <select id="selectBloss" resultType="blos" parameterType="_int" useCache="true">
+        select * from blog
+        <where>
+            <if test="id!=null">
+                id=#{id}
+            </if>
+        </where>
+    </select>
+</mapper>

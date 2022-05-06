@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--使用注解 进行事务管理-->
+
+<!--       引入context空间-->
+<!--配置事务 tx空间-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+    ">
+    <!--    开启组件扫描，扫描出spring框架中的配置注解-->
+    <context:component-scan base-package="com.spring5.bank"></context:component-scan>
+
+    <!--&lt;!&ndash;    配置连接池 引入外部配置文件   classpath:必须在src文件下&ndash;&gt;&ndash;&gt;-->
+    <context:property-placeholder location="classpath:bank.properties"/>
+    <!--    数据连接-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driverClass}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.userName}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+
+    <!--    配置jdbcTemplate对象，注入DataSource-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!--    在配置文件中配置事务管理器-->
+    <!--    创建事务管理器对象-->
+    <bean id="transactionmanager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--        注入数据源-->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!--    开启事务注解  transaction-manager:为事务管理器对象id-->
+    <tx:annotation-driven transaction-manager="transactionmanager"></tx:annotation-driven>
+</beans>

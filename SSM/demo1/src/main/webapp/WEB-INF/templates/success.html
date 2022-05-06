@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p th:text="${bookID}"></p>
+    <table id="dataTable" border="1" cellspacing="0" cellpadding="0" style="text-align: center">
+        <tr>
+            <th colspan="4">书本信息</th>
+        </tr>
+        <tr>
+            <th>Bookid</th>
+            <th>bookName</th>
+            <th>bookCounts</th>
+            <th>detail</th>
+<!--            <th>options (<a th:href="@{/toAdd}">add</a>) </th>-->
+        </tr>
+        <tr th:each="book:${books}">
+            <!--            展示数据  th:text：解析数据-->
+            <td th:text="${book.bookId}"></td>
+            <td th:text="${book.bookName}"></td>
+            <td th:text="${book.bookCounts}"></td>
+            <td th:text="${book.detail}"></td>
+        </tr>
+    </table>
+
+    <input  th:text="${register.message}">
+</body>
+</html>

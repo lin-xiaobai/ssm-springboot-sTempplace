@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--指定接口 即创建BolosMapper实现类-->
+<mapper namespace="mybatis.dao.BlogMapper">
+
+<!--抽取sql语句中代码重复 使用sql标签抽取，并且设置id名 一般使用if where set标签较多-->
+<!--    在对应的sql语句中使用<include refid="if-title-author-"></include>
+    refid：抽取重复代码的sql标签的id属性值
+    代替sql语句中抽取的代码
+-->
+    <sql id="if-title-author">
+        <if test="title !=null">
+            and title = #{title}
+        </if>
+        <if test="author!=null">
+            and author=#{author}
+        </if>
+    </sql>
+
+
+
+<!--    #sql语句中的value里面 应该写实体类的-->
+<!--    设置blos实体类的全类名 的别名为 blos 需要在核心配置文件中配置-->
+    <insert id="insertBlos" parameterType="blos">
+        insert into blog (id,title,author,create_time,views)
+        values(#{id},#{title},#{author},#{createTime},#{views})
+    </insert>
+
+<!--动态sql-->
+<!--    通过 “title” 和 “author” 两个参数进行可选搜索-->
+<!--    //    在xml文件中的select标签 里面填写 一个if标签 表示可选搜索-->
+<!--    返回的类型为 一个集合-->
+<!--    if标签：当传参的map集合里面没有 title 和 author 则直接查全部 如果有则按判断语句结果 进行拼接sql语句-->
+ <!--    where 元素只会在子元素返回任何内容的情况下才插入 “WHERE” 子句。
+        而且，若子句的开头为 “AND” 或 “OR”，where 元素也会将它们去除。
+        -->
+    <select id="selectBlossByIF" resultType="blos"  parameterType="map">
+        select * from blog
+        <where>
+           <include refid="if-title-author"></include>
+        </where>
+    </select>
+
+
+<!--  想从多个条件中选择一个使用去拼接sql语句-->
+<!--MyBatis 提供了 choose 元素，它有点像 Java 中的 switch 语句-->
+<!--    传入了 “title” 就按 “title” 查找，
+    传入了 “author” 就按 “author” 查找的情形。
+    若两者都没有传入，就返回 按照views 查找-->
+    <select id="selectBlossByChoose" resultType="blos" parameterType="map">
+        select * from blog
+        <where>
+        <choose>
+            <when test="title!=null">
+                and title =#{title}
+            </when>
+            <when test="author!=null">
+                and author=#{author}
+            </when>
+            <otherwise>
+                and views =#{views}
+            </otherwise>
+        </choose>
+        </where>
+    </select>
+
+<!--    修改 使用set标签  因为sql语句中 set里面的功能代码被提取出来了，所以使用 include标签即可代替提取的代码-->
+<!--    用于动态更新语句的类似解决方案叫做 set。
+set 元素可以用于动态包含需要更新的列，忽略其它不更新的列-->
+<!--set 元素会动态地在行首插入 SET 关键字，并会删掉额外的逗号-->
+<!--（这些逗号是在使用条件语句给列赋值时引入的-->
+    <update id="updateBlosBySet" parameterType="map">
+        update blog
+        <set>
+            <include refid="if-title-author"></include>
+        </set>
+            where id=#{id}
+    </update>
+
+<!--    使用foreach标签-->
+<!--    查询id为1 ，2,3的数据-->
+<!--   sql语句 select * from blog where 1=1 and (id=1 or id=2 or id=3)-->
+<!--  传参是一个万能的map集合 map中可以存在一个集合   -->
+<!--    步骤：我们将id为1,2,3传递到集合中去，
+然后在sql语句中使用《foreach》遍历一个集合 ，然后sql语句会根据里面的值 去拼接 sql语句-->
+<!--    在foreach标签中设置 collection(集合)的key，
+在map集合中设置map的“key"为list,即可获取对应的list集合
+item="ids"设置 从集合中遍历出来的属性值的名字为id
+
+#{id}是遍历出来的id（即上面 item属性值）
+open：设置以“（”开始  close：设置以“）”结束
+(id=1 or id=2 or id=3)
+separator：设置分隔符为 or
+-->
+    <select id="selectBlossByForeach" parameterType="map" resultType="blos">
+        select * from blog
+        <where>
+
+        <foreach item="id" collection="ids" open="and (" separator="or" close=")">
+           id= #{id}
+        </foreach>
+        </where>
+    </select>
+
+
+</mapper>

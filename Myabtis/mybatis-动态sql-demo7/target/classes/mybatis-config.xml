@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--xml文件中的标签是有先后顺序之分的，不然会报错-->
+<!--configuration  核心配置 -->
+<configuration>
+
+
+
+<!--1.优化点
+    dataSource标签里面的property标签可以在外部进行配置，并可以进行动态替换
+    即在属性文件中配置这些属性 即写一个*.property文件
+    在value中通过${属性名}来获取指定的value
+-->
+    <!--    引入外部文件db.properties配置文件,因为这个配置文件在resources配置文件夹中，所以只需要写文件名就可以了-->
+    <properties resource="db.properties">
+<!-- 如果一个属性在不只一个地方进行了配置，那么，MyBatis 将按照下面的顺序来加载：
+        1.首先读取在 properties 元素体内指定的属性。
+        2.然后根据 properties 元素中的 resource 属性读取类路径下属性文件，或根据 url 属性指定的路径读取属性文件，并覆盖之前读取过的同名属性。
+        3.最后读取作为方法参数传递的属性，并覆盖之前读取过的同名属性。-->
+<!--         username 和 password 将会由 properties 元素中设置的相应值来替换。
+             driver 和 url 属性将会由 db.properties 文件中对应的值来替换。-->
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </properties>
+
+    <settings>
+<!--        配置标准日志工厂（mybatis内置日志工厂）STDOUT_LOGGING实现 找官方文档 -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+<!--       配置日志工厂LOG4J  需要导包 去maven上找 -->
+<!--       可以使用log4j.properties通过一个配置文件来灵活地进行配置-->
+<!--        <setting name="logImpl" value="LOG4J"/>-->
+
+<!--       开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn -->
+<!--        原因：数据库中出现create_time字段名 而实体类中的属性名是驼峰命名法 createTime -->
+<!--        开启这个，可以让列名A_COLUMN 对应 实体类中  aColumn-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+
+<!--    类型别名  Java 类型内建的基本类型别名。 -->
+<!--类型别名可为 Java 类型设置一个缩写名字。
+    它仅用于 XML 配置，意在降低冗余的全限定类名书写。
+    例如UserMapper.xml文件中存在多个 mybatis.dao.UserMapper 代码出现冗余
+    解决方法：两种
+    实体类比较少时，使用第一种
+    -->
+<!--    第一种：alias:写的是别名，可以随便写 type:写的指导包的路径-->
+    <typeAliases>
+    <typeAlias alias="blos" type="mybatis.pojo.blos"/>
+</typeAliases>
+<!--    第二种 指定一个包名 使用在指定类上添加注解@Alias("Student") 为包名 起别名-->
+<!--   <typeAliases>-->
+<!--       <package name="mybatis.pojo.studentent"/>-->
+<!--   </typeAliases>-->
+
+
+<!--    定义坏境 可以定义多个环境 即连接多个数据库，
+一个sqlSessionFactory实例对应一个数据库
+若想连接两个数据库，则需要创建两个sqlSessionFactory实例-->
+
+<!--    默认加载使用 id为development 的环境，
+        可以手动修改默认环境 即default的值 对应环境配置的id
+      最终只能实现一个 环境
+-->
+<!--    指定默认环境为 id=db的环境-->
+    <environments default="db">
+<!--        定义环境-->
+        <environment id="development">
+<!--            事务管理 默认使用jdbc的事务管理-->
+<!-- 这个配置直接使用了 JDBC 的提交和回滚设施，它依赖从数据源获得的连接来管理事务作用域。-->
+            <transactionManager type="JDBC"/>
+<!--            配置 JDBC 连接对象的资源       -->
+<!-- 利用“池”的概念将 JDBC 连接对象组织起来，避免了创建新的连接实例时所必需的初始化和认证时间。           -->
+<!-- 优点：1.能使并发 Web 应用快速响应请求  2.减少数据库的连接次数
+        2.让连接数据库的对象存在数据池中，让下个连接对象直接从池中连接 ，不需要重新访问数据库
+                -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+<!--useUnicode=true&amp;characterEncoding=UTF-8":支持传中文到数据库       useSSL=true安全连接     &amp;转义符  useUnicode=true支持中文     -->
+                <property name="url" value="jdbc:mysql://localhost:3306/user?serverTimezone=Asia/Shanghai&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+
+<!--      优化  再定义一个环境 property的value是通过配置文件db.propertys获取的 -->
+        <environment id="db">
+            <!--事务管理 默认使用jdbc的事务管理-->
+            <transactionManager type="JDBC"/>
+<!--            数据源的配置 POOLED-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+<!--    注册绑定我们的Mapper文件-->
+<!--    每一个Mapper.xml都需要在Mybatis核心配置文件中注册
+    映射器-->
+    <mappers>
+<!--    方式一    基于配置文件UserMapper.xml文件 来指定xml文件
+        使用相对于类路径的资源引用 可以与UserMapper接口不在同一包下 可以在任意一个位置-->
+<!--        <mapper resource="mybatis/dao/*.xml"/>-->
+
+ <!-- 方式二 使用映射器接口实现类的完全限定类名 使用class文件绑定注册-->
+<!--        注意点：1.接口和他的mapper配置文件必须同名
+                   2.接口和他的mapper配置文件必须在同一个包下
+-->
+<!--  注解中应该 的mapper标签应该指向于接口 和 mapper里面的标签改为class-->
+        <!--        *Mapper “*” 通配符  指的是所有以Mapper.xml结尾的文件-->
+        <mapper class="mybatis.dao.BlogMapper"></mapper>
+
+
+        <!--    方式三 将包内的映射器接口实现全部注册为映射器  使用扫描包进行注入绑定-->
+        <!--        注意点：1.接口和他的mapper配置文件必须同名
+                   2.接口和他的mapper配置文件必须在同一个包下-->
+<!--      <mappers>-->
+<!--            <package name="mybatis.dao"/>-->
+<!--        </mappers>-->
+    </mappers>
+</configuration>

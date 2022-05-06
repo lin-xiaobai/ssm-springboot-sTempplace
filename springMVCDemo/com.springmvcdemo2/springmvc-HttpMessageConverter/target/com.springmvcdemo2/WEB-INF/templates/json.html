@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" th:src="@{/static/js/jquery-3.5.1.min.js}">
+    </script>
+</head>
+<body>
+<button id="#btn">按钮</button>
+<script type="text/javascript">
+    // $(document).ready(function () {
+    //     $("#btn").click(function () {
+    //         $.get("testObjectToJson", function (data) {
+    //             alert(data);
+    //         }, "json");
+    //     });
+    //
+    // })
+    //json对象
+    var  json1={"name":"admin","age":"28"};
+    // json对象中有一个json数组
+    var json2={"person":[
+            {"name":"admin","age":"28"},
+            {"name":"admin","age":"29"},
+            {"name":"admin","age":"30"}
+        ],
+        "persons":[
+            {"name":"admin","age":"28"},
+            {"name":"admin","age":"29"},
+            {"name":"admin","age":"30"}
+    ]};
+    // json数组
+    var json3=[
+        {"name":"admin","age":"28"},
+        {"name":"admin","age":"29"},
+        {"name":"admin","age":"30"},
+        {"name":"admin","age":"30"},
+        {"name":"admin","age":"30"},
+
+    ];
+// alert(json1.age)
+//     alert(json2.person[2].name.length);
+//     alert(json3[0]);
+//     alert(json2.person[0]["name"]);
+//    遍历单个对象
+//     for(var  key in json1){
+//         alert(key+":"+json1[key]);
+//     }
+//     遍历json的数组
+//     for (var i=0;i<json3.length;i++){
+//         alert(json3[i].age);
+//     }
+//     // 遍历对象中的数组
+//     for(var i=0;i<json2.person.length;i++){
+//         alert(json2.person[i].age);
+//     }
+    for (var key in json2){
+        //得到一个数组
+        alert(key);
+        var presonss=json2[key];
+        alert(presonss.length);
+        for (var i=0;i<presonss.length;i++){
+            alert(presonss[i].age);
+        }
+    }
+</script>
+
+</body>
+</html>

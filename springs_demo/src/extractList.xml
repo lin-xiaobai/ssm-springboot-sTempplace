@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xmlns:p="http://www.springframework.org/schema/p"
+
+       xmlns:util="http://www.springframework.org/schema/util"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/beans/spring-util.xsd">
+
+    <!-- 把集合注入部分提取出来-->
+    <!--    在spring配置文件中引入名称空间util
+        1.复制一份xmlns：将xsi改为util
+        2.复制一份xsi，将里面的bean修改成util
+    -->
+
+    <!--使用util标签完成list集合注入提取-->
+    <util:list id="booklist">
+        <value>九阳</value>
+        <value>10杨</value>
+        <value>8yang</value>
+    </util:list>
+    <!--    2.提取list集合类型属性注入使用-->
+    <bean id="book" class="com.spring5.extractBean.book">
+        <property name="bookName" ref="booklist">
+
+        </property>
+    </bean>
+
+</beans>

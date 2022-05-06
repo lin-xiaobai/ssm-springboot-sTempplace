@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--引入外部文件 context空间-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--第二步：开启组件扫描 扫描所有的注解和类-->
+    <!--    方式一：如果扫描多个包，多个包使用逗号隔开-->
+    <!--    component(组件)-scan(扫描)-->
+    <!--    <context:component-scan base-package="com.spring5.annotation注解"></context:component-scan>-->
+
+    <!--方式二：扫描包上层目录-->
+    <!--    <context:component-scan base-package="com.spring5.annotation注解"></context:component-scan>-->
+
+
+    <!--实例1
+    use-default-filters="false" 表示现在不使用默认filter，自己配置filter
+    context:include-filter，设置扫描哪些内容
+
+    代码意思：use-default-filters="false"表示不扫描所有的类或者注解
+    include-filter：表示去扫描指定的类型 值为annotation 表示扫描注解
+    Controller：表示在包中只扫描带有Controller的注解"-->
+    <!--    <context:component-scan base-package="com.spring5" use-default-filters="false">-->
+    <!--        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+    <!--    </context:component-scan>-->
+
+
+    <!--    示例2
+            下面意思是扫描包中所有的内容（注解和类）
+             <context:exclude-filter：设置哪些内容不进行扫描
+             代码意思：在包中扫描所有的内容，设置注解中Controller不进行扫描
+    -->
+    <!--    <context:component-scan base-package="com.spring5">-->
+    <!--        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+    <!--    </context:component-scan>-->
+
+
+</beans>

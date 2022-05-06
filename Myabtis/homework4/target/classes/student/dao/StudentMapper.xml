@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--指定接口 -->
+<mapper namespace="student.dao.StudentMapper">
+
+    <select id="selectStudent" resultType="student">
+          select * from student
+          <where>
+              <choose>
+                  <when test="sname!=null">
+                      and sname=#{sname}
+                  </when>
+                  <when test="sid!=null">
+                      and sid=#{sid}
+                  </when>
+                  <when test="scolleage!=null">
+                    and scolleage=#{scolleage}
+                  </when>
+                  <when test="smajor!=null">
+                      and smajor=#{smajor}
+                  </when>
+                  <when test="sage!=null">
+                      and sage=#{sage}
+                  </when>
+              </choose>
+          </where>
+    </select>
+
+    <insert id="insertStudent" parameterType="student">
+        insert into student (sname,sage,sid,scolleage,smajor)
+        values (#{sname},#{sage},#{sid},#{scolleage},#{smajor})
+    </insert>
+
+</mapper>

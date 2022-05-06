@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--注入集合类型属性（数组，map集合，set集合，list集合）-->
+    <!--    创建对象-->
+    <bean id="cousers" class="com.spring5.collectionType.collectionTypeBean">
+        <!--        注入数组属性-->
+        <property name="courses">
+            <array>
+                <value>java</value>
+                <value>mysql</value>
+            </array>
+        </property>
+        <!--        注入list集合-->
+        <property name="list">
+            <list>
+                <value>aa</value>
+                <value>bb</value>
+            </list>
+        </property>
+        <!--        注入map集合-->
+        <property name="mao">
+            <map>
+                <entry key="JAVA" value="javaee"></entry>
+                <entry key="JAVASE" value="javase"></entry>
+            </map>
+        </property>
+        <!--        注入set集合 底层是map集合-->
+        <property name="set">
+            <set>
+                <value>2</value>
+                <value>3</value>
+            </set>
+        </property>
+        <!--    注入list集合类型，值是对象   name是属性名     -->
+        <property name="listCourse">
+            <list>
+                <!-- ref引入的对象 bean的值是对象的name-->
+                <ref bean="course1"></ref>
+                <ref bean="course2"></ref>
+            </list>
+        </property>
+        <!--    注入map集合类型，key是object 值是对象   name是属性名     -->
+        <property name="mapcouser">
+            <map>
+                <entry key="zs" value-ref="stu1"></entry>
+                <entry key="ls " value-ref="stu2"></entry>
+            </map>
+        </property>
+
+    </bean>
+    <!-- 创建用加上list集合中的对象元素       -->
+    <!--       创建多个course对象-->
+    <bean id="course1" class="com.spring5.collectionType.collectionTypeOject">
+        <property name="couseName" value="spring5框架"></property>
+    </bean>
+    <bean id="course2" class="com.spring5.collectionType.collectionTypeOject">
+        <!--        使用set方法为属性赋值-->
+        <property name="couseName" value="spring boot框架"></property>
+    </bean>
+    <!-- 创建用加上map集合中的对象元素       -->
+    <!--       创建多个course对象-->
+    <bean id="stu1" class="com.spring5.collectionType.collectionTypeOject">
+        <property name="couseTea" value="zs"></property>
+    </bean>
+    <bean id="stu2" class="com.spring5.collectionType.collectionTypeOject">
+        <property name="couseTea" value="ls"></property>
+    </bean>
+</beans>

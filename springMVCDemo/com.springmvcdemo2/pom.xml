@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.example</groupId>
+  <artifactId>com.springmvcdemo2</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>springmvc-dome1</module>
+      <module>springmvc-dome03</module>
+    <module>springmvcdemo04</module>
+      <module>springmvc_jsp</module>
+      <module>springmvc_RESTFul</module>
+      <module>springmvc-requestBody</module>
+    <module>springmvc-HttpMessageConverter</module>
+      <module>Springmvc-ByAnnotationToConfig</module>
+    <module>springmvc_homeWork3</module>
+      <module>springmvc_homework3</module>
+    <module>springmvc_student</module>
+  </modules>
+  <packaging>pom</packaging>
+
+  <name>com.springmvcdemo2 Maven Webapp</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+<!--  <url>http://www.chrome.com</url>-->
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+<!--    修改为jdk版本-->
+    <maven.compiler.source>1.9</maven.compiler.source>
+    <maven.compiler.target>1.9</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+<!--      修改Junit测试的版本号-->
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>com.springmvcdemo2</finalName>
+
+<!--    可删除，理由：与插件相关-->
+<!--    <pluginManagement>&lt;!&ndash; lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) &ndash;&gt;-->
+<!--      <plugins>-->
+<!--        <plugin>-->
+<!--          <artifactId>maven-clean-plugin</artifactId>-->
+<!--          <version>3.1.0</version>-->
+<!--        </plugin>-->
+<!--        &lt;!&ndash; see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging &ndash;&gt;-->
+<!--        <plugin>-->
+<!--          <artifactId>maven-resources-plugin</artifactId>-->
+<!--          <version>3.0.2</version>-->
+<!--        </plugin>-->
+<!--        <plugin>-->
+<!--          <artifactId>maven-compiler-plugin</artifactId>-->
+<!--          <version>3.8.0</version>-->
+<!--        </plugin>-->
+<!--        <plugin>-->
+<!--          <artifactId>maven-surefire-plugin</artifactId>-->
+<!--          <version>2.22.1</version>-->
+<!--        </plugin>-->
+<!--        <plugin>-->
+<!--          <artifactId>maven-war-plugin</artifactId>-->
+<!--          <version>3.2.2</version>-->
+<!--        </plugin>-->
+<!--        <plugin>-->
+<!--          <artifactId>maven-install-plugin</artifactId>-->
+<!--          <version>2.5.2</version>-->
+<!--        </plugin>-->
+<!--        <plugin>-->
+<!--          <artifactId>maven-deploy-plugin</artifactId>-->
+<!--          <version>2.8.2</version>-->
+<!--        </plugin>-->
+<!--      </plugins>-->
+<!--    </pluginManagement>-->
+    <plugins>
+<!--    jetty插件-->
+  <plugin>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-maven-plugin</artifactId>
+    <version>9.4.15.v20190215</version>
+    <configuration>
+<!--      热部署，每10秒扫描一次-->
+      <scanIntervalSeconds>10</scanIntervalSeconds>
+<!--      可指定当前项目的站点名-->
+      <httpConnector>
+<!--        <conntor implementtation=""org.mor-->
+        <port>9090</port>
+      </httpConnector>
+      <useTestClasspath>true</useTestClasspath>
+      <webAppConfig>
+
+        <contextPath>/</contextPath> <!-- 这里指定在浏览器访问时，当前Web应用的根路径 -->
+      </webAppConfig>
+    </configuration>
+  </plugin>
+
+<!--    Tomcat插件-->
+
+    <plugin>
+      <groupId>org.apache.tomcat.maven</groupId>
+      <artifactId>tomcat7-maven-plugin</artifactId>
+      <version>2.1</version>
+      <configuration>
+        <port>8888</port>
+        <path>/springmvcdemo2</path>
+        <uriEncoding>UTF-8</uriEncoding>
+        <server>tomcat7</server>
+      </configuration>
+    </plugin>
+
+  </plugins>
+  </build>
+</project>

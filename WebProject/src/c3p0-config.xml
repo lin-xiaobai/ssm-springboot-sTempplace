@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<c3p0-config>
+    <!--如果调用时没有写name属性值则默认使用这个-->
+    <!--如果要研究某个xml中可以设置哪些属性。找相关的类  属性 或者setXxx()-->
+    <default-config>
+        <property name="user">root</property>
+        <property name="password">root</property>
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306/shop</property>
+        <property name="checkoutTimeout">3200</property>
+    </default-config>
+
+    <!--通过name属性来匹配信息  优先调用-->
+    <name-config name="wenfeng">
+        <property name="user">root</property>
+        <property name="password">root</property>
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306/shop</property>
+        <property name="checkoutTimeout">2200</property>
+
+
+    </name-config>
+</c3p0-config>

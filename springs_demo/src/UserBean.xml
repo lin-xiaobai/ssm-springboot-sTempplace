@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xmlns:p="http://www.springframework.org/schema/p"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--p名称空间注入-->
+
+
+    <!--方式1 配置user对象的创建-->
+    <!--spring配置相关的类 配置User对象创建-->
+    <!--id：名字 标识作用 class写文件路径-->
+    <bean id="user" class="com.spring5.User"></bean>
+
+    <!--在spring配置文件配置对象创建。配置属性注入-->
+    <!--方式2  set方法注入属性-->
+    <bean id="book" class="com.spring5.book">
+        <!--使用property完成属性注入
+            name:类里面属性名称
+            value：向属性注入的值
+        -->
+        <!--        <property name="name" value="xxx"></property>-->
+        <property name="id" value="120"></property>
+        <!--设置null值-->
+        <!--        <property name="name" >-->
+        <!--            <null/>-->
+        <!--        </property>-->
+
+        <!--    属性值包含特殊符号
+          1.把<>进行转义 $lt;$gt;
+           2.把带特殊符号内容写到CDATA-->
+        <property name="name">
+            <value><![CDATA[<<南京>>]]></value>
+        </property>
+
+    </bean>
+
+    <!--在spring配置文件配置对象创建。
+   有参数构造注入属性-->
+    <!--报错的原因是：系统会自动去查找类中的无参构造方法 在往下填属性就解决-->
+    <bean id="orders" class="com.spring5.orders">
+        <!--constructor-arg:构造方法参数-->
+        <!--使用constructor-arg完成有参构造方法注入属性值
+            方式一：
+            name:类里面属性名称
+            value：向属性注入的值
+            方式二：
+            index:类属性名称的索引 （从0开始）
+              value：向属性注入的值
+        -->
+        <constructor-arg name="id" value="abc"></constructor-arg>
+        <constructor-arg index="1" value="广州"></constructor-arg>
+    </bean>
+
+    <!-- .p名称空间注入  p是上面的标识符-->
+    <bean id="student" class="com.spring5.student" p:id="zs" p:name="小明">
+    </bean>
+
+</beans>

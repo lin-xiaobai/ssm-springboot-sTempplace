@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script type="text/javascript" th:src="@{static/js/jquery-3.5.1.min.js}"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--js对象-->
+<script type="text/javascript">
+    // <!--    对象里面嵌套一个对象  js对象里面的key和value都可以是object类型-->
+    var js={lastname:"xiaoming",age:18,cat:{name:"小明"}};
+    //对象里面嵌套一个数组，然后数组里面嵌套一个对象
+    var js2={lastname:"xiaoming",age:18,cat:{name:"小明"},class:[{name:"高一",classname:20}],order:js2};
+    var js3={lastname:"xiaoming",age:19};
+    // alert(js2.order);
+    // alert(js.lastname);
+    // alert(js.cat.name);
+    // alert(js2.class[0].name);
+    //json对象 就是是key的值必须是string类型 value可以是obejct类型
+    //json对象
+    var json={"lastname":"xiaoming","age":18,"cat":{"name":"小明"}};
+    //将js对象转换为json对象
+    var json2=JSON.stringify(json);
+    //查看json对象的类型
+    alert(json2);
+    //如果想使用这个json数据，并且获取js对象里面的属性值 需要将json对象转为js对象
+    //然后就可以通过“.”的方式获取相对应的值
+    // 将json对象转为js对象
+    var js4=JSON.parse(json2);
+    alert(js4.lastname);
+    alert(typeof  js4);
+</script>
+
+</body>
+</html>

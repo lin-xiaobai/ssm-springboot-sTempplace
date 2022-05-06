@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+<!--    父工程-->
+    <groupId>org.example</groupId>
+    <artifactId>Myabtis</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+<!--    自动生成子工程 子过程会继承父工程的所有的依赖-->
+    <modules>
+        <module>mybatis-dome01</module>
+        <module>mybatis-demo2-optimization</module>
+        <module>mybatis-FieldAndBeanNameDifferent-03</module>
+        <module>mybatis-byAnnotation-dome4</module>
+        <module>mybatis-多表查询-多对一</module>
+        <module>mybatis-多表查询之一对多</module>
+        <module>mybatis-多表查询-多对一</module>
+        <module>mybatis-动态sql-demo7</module>
+        <module>mybatis-Cache缓存-dome8</module>
+        <module>homework4</module>
+    </modules>
+
+
+    <!--    导入依赖-->
+<!--    mysql-->
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.47</version>
+        </dependency>
+<!--     mybatis   -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.7</version>
+        </dependency>
+<!--        junit测试-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+        </dependency>
+<!--     log4j工厂日志   -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
+<!-- lombok依赖 使用注解自动生成set和get方法等等       -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
+        </dependency>
+
+    </dependencies>
+
+<!-- maven由于约定大于配置，自己写的配置文件，无法被导出或者生效的问题
+  解决方法：
+   在build中配置resource，来防止资源导出失败问题-->
+<!--    配置文件一般写在resources文件夹，但是有些配置文件写在了java包上
+    所以需要手动进行资源过滤
+-->
+    <build>
+        <resources>
+            <resource>
+            <directory>src/main/resources</directory>
+                <includes>
+                     <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    </includes>
+                <filtering>false</filtering>
+            </resource>
+<!--            手动配置资源过滤  在src/main/java下的 properties文件和xml文件能够被过滤导出开启-->
+            <resource>
+             <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+            <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
+    <properties>
+        <!-- 项目编译编码-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- maven编译的jdk版本-->
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+</project>

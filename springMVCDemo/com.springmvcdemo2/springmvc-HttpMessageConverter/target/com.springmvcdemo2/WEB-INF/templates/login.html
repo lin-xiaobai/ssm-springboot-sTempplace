@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript" th:src="@{static/js/jquery-3.5.1.min.js}"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="#" method="post">
+        账号：<input type="text" id="name" name="username"/><span id="msg"></span><br>
+        密码：<input type="text" id="pwd"/><br>
+        <input type="submit">
+    </form>
+
+</body>
+    <script type="text/javascript">
+        $('#name').blur(function () {
+            var username=$(this).val();
+            var spantext=$('#msg');
+            //user需要与springmvc中的处理器形参名一致
+            // $.get("check",{"user":username},function (data) {
+            //     alert( typeof data);
+            // },"text")
+
+            //定义一个js对象
+            var ajaxvAlue={
+                url:"check2",
+                type:"GET",
+                async:true,//调整异步默认（true）/同步fasle
+                data:{"user":username,"age":18},
+                //指定返回类型为json数据，而jQuery中会自动将数据变为js对象
+                dataType:"json",
+                success:function(data){
+                    spantext.html(data);
+                    spantext.css("color","red")
+                },
+            }
+            //里面是一个对象
+            $.ajax(ajaxvAlue);
+            return false;
+        })
+
+    </script>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--指定接口 即创建BolosMapper实现类-->
+<mapper namespace="com.dao.BookMapper">
+<!--    开启二级缓存-->
+    <cache />
+<!--    根据条件查询-->
+    <select id="queryByID" resultType="Book" parameterType="int">
+        select * from books
+        <where>
+            <if test="bookID"> bookID = #{bookID}</if>
+        </where>
+    </select>
+<!--    查询全部-->
+    <select id="queryAllBooks" resultType="Book">
+        select * from books
+    </select>
+
+
+</mapper>

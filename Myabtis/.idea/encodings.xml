@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/homework4/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/homework4/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-Cache缓存-dome8/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-Cache缓存-dome8/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-FieldAndBeanNameDifferent-03/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-FieldAndBeanNameDifferent-03/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-byAnnotation-dome4/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-byAnnotation-dome4/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-demo2-optimization/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-demo2-optimization/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-dome01/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-dome01/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-动态sql-demo7/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-动态sql-demo7/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-多表查询-多对一/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-多表查询-多对一/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-多表查询之一对多/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-多表查询之一对多/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

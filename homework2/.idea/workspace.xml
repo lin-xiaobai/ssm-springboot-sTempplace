@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="95c14e5e-c3ad-4768-bf0e-7ea1320d36f0" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Class" />
+        <option value="spring-beans.schema" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\idea\maven仓库" />
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+        <option name="userSettingsFile" value="E:\idea\IntelliJIDEA2019.3.3\plugins\maven\lib\maven3\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="#JAVA_INTERNAL" />
+    <option name="vmOptions" value="-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true" />
+  </component>
+  <component name="ProjectId" id="22MmNgmk3VHOwDo4LruDjClDBpo" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.homework" />
+      <recent name="com" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\ideaworkspace\homework2\src\main\resources\templates" />
+      <recent name="E:\ideaworkspace\homework2\src\main\resources\static" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.DemoApplicationTests.contextLoads">
+    <configuration name="DemoApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="homework2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.homework.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.homework" />
+      <option name="MAIN_CLASS_NAME" value="com.homework.DemoApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test.con" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="homework2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.homework.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.homework" />
+      <option name="MAIN_CLASS_NAME" value="com.homework.test" />
+      <option name="METHOD_NAME" value="con" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="homework2" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.homework.DemoApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.test.con" />
+      <item itemvalue="JUnit.DemoApplicationTests.contextLoads" />
+      <item itemvalue="Spring Boot.DemoApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.DemoApplicationTests.contextLoads" />
+        <item itemvalue="JUnit.test.con" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="95c14e5e-c3ad-4768-bf0e-7ea1320d36f0" name="Default Changelist" comment="" />
+      <created>1639655791649</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1639655791649</updated>
+      <workItem from="1639655799643" duration="326000" />
+      <workItem from="1639656876387" duration="58000" />
+      <workItem from="1639656991034" duration="4207000" />
+      <workItem from="1639832458951" duration="1461000" />
+      <workItem from="1639971238916" duration="16000" />
+      <workItem from="1640238885703" duration="10000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="65" y="84" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1639657376239">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="65" y="84" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1639657376239" />
+    <state x="976" y="151" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1639833599436">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="976" y="151" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1639833599436" />
+    <state x="705" y="310" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1639657808239">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="705" y="310" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1639657808239" />
+    <state x="824" y="265" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1639657809646">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="824" y="265" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.824@0.0.1536.824" timestamp="1639657809646" />
+    <state width="1066" height="258" key="GridCell.Tab.0.bottom" timestamp="1639661574580">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1066" height="258" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1639661574580" />
+    <state width="1066" height="258" key="GridCell.Tab.0.center" timestamp="1639661574580">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1066" height="258" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1639661574580" />
+    <state width="1066" height="258" key="GridCell.Tab.0.left" timestamp="1639661574579">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1066" height="258" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1639661574579" />
+    <state width="1066" height="258" key="GridCell.Tab.0.right" timestamp="1639661574580">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1066" height="258" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1639661574580" />
+    <state width="1066" height="258" key="GridCell.Tab.1.bottom" timestamp="1639661574582">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1066" height="258" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1639661574582" />
+    <state width="1066" height="258" key="GridCell.Tab.1.center" timestamp="1639661574581">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1066" height="258" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1639661574581" />
+    <state width="1066" height="258" key="GridCell.Tab.1.left" timestamp="1639661574581">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1066" height="258" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1639661574581" />
+    <state width="1066" height="258" key="GridCell.Tab.1.right" timestamp="1639661574581">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1066" height="258" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1639661574581" />
+    <state width="1066" height="258" key="GridCell.Tab.2.bottom" timestamp="1639661574583">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1066" height="258" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1639661574583" />
+    <state width="1066" height="258" key="GridCell.Tab.2.center" timestamp="1639661574582">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1066" height="258" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1639661574582" />
+    <state width="1066" height="258" key="GridCell.Tab.2.left" timestamp="1639661574582">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1066" height="258" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1639661574582" />
+    <state width="1066" height="258" key="GridCell.Tab.2.right" timestamp="1639661574582">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1066" height="258" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1639661574582" />
+    <state x="354" y="93" key="spring file set editor" timestamp="1639833093867">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="354" y="93" key="spring file set editor/0.0.1536.824@0.0.1536.824" timestamp="1639833093867" />
+  </component>
+</project>

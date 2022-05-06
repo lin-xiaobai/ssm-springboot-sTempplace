@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.springboot</groupId>
+    <artifactId>boot01-hellowrold</artifactId>
+    <version>1.0-SNAPSHOT</version>
+<!--    父工程-->
+    <parent>
+        <!--           让项目使用springboot框架-->
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.4.RELEASE</version>
+    </parent>
+    <dependencies>
+<!--        自定义的类和配置文件绑定一般没有提示。-->
+<!--        解决方法：使用这个依赖可以让自定义文件在配置文件中有提示信息-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+<!--            导入配置文件处理器-->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+<!-- 日志更新技术 项目或者页面修改以后：Ctrl+F9；-->
+<!--        简单来说就是重启按钮-->
+<!--        好处：在静态页面的时候不需要重启tomcat-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+<!--        简化javabean开发-->
+        <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <!--     配置web开发场景启动器  -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+<!--      1、引入依赖默认都可以不写版本
+          2、引入非版本仲裁的jar，要写版本号。
+如 <properties>
+        <mysql.version>5.1.43</mysql.version>
+    </properties>
+-->
+
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+<!--      插件：将项目打包成jar包   把项目打成jar包，直接在目标服务器执行即可-->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+<!--                打包时，让这个spring-boot-configuration-processor包 不参与到打包过程中-->
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-configuration-processor</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

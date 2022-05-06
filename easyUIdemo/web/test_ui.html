@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="easyuijar/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="easyuijar/themes/icon.css">
+	<script type="text/javascript" src="easyuijar/jquery.min.js"></script>
+	<script type="text/javascript" src="easyuijar/jquery.easyui.min.js"></script>
+	<script type="text/javascript">
+	$( function(){// http://ip:port/javaee/test_ui.html
+		$("#orgTree").tree(  
+				{url:"servlet/treedata"
+				,onClick:handleClick }  );//url指明数据的来源url:"treedata.json"
+	} );          // http://ip:port/javaee/treedata.json
+	/*处理树节点的点击事件*/
+	function handleClick(node){
+		alert(node.id+"-"+node.text+" "+node.state
+		+" "+ node.attributes.url);
+		open(node.attributes.url);
+	}
+	</script>
+</head>
+<body>
+	<ul id="orgTree"></ul>
+</body>
+</html>

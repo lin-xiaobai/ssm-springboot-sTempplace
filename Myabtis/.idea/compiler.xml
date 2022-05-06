@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="BUILD_PROCESS_HEAP_SIZE" value="1024" />
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mybatis-Cache缓存-dome8" />
+        <module name="mybatis-byAnnotation-dome4" />
+        <module name="homework4" />
+        <module name="mybatis-动态sql-demo7" />
+        <module name="mybatis-demo2-optimization" />
+        <module name="mybatis-FieldAndBeanNameDifferent-03" />
+        <module name="mybatis-dome01" />
+        <module name="mybatis-多表查询之一对多" />
+        <module name="mybatis-多表查询-多对一" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mybatis-Cache-dome8" target="1.8" />
+      <module name="mybatis-多表查询-一对多" target="1.8" />
+      <module name="mybatis-多表查询-关联和集合-多对一关联" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties">
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </properties>
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+<!--    类型别名  Java 类型内建的基本类型别名。 -->
+    <typeAliases>
+    <typeAlias alias="student" type="student.pojo.Student"/>
+</typeAliases>
+<!--    定义坏境 -->
+<!--    默认加载使用 id为development 的环境  指定默认环境为 id=db的环境 -->
+    <environments default="db">
+<!--        定义环境-->
+<!--       property的value是通过配置文件db.propertys获取的 -->
+        <environment id="db">
+            <!--事务管理 默认使用jdbc的事务管理-->
+            <transactionManager type="JDBC"/>
+<!--            数据源的配置 POOLED-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+<!--    注册绑定我们的Mapper文件-->
+    <mappers>
+        <mapper class="student.dao.StudentMapper"></mapper>
+    </mappers>
+</configuration>

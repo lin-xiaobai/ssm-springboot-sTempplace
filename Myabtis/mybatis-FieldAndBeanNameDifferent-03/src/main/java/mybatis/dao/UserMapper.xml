@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace 绑定一个对应的Dao/mapper接口  即dao/mapper的实现类-->
+<!--namespace:接口的全类名-->
+<mapper namespace="mybatis.dao.UserMapper">
+<!--select查询语句 id对应的是方法的名字  resultType:sql语句返回值类型（结果集）对应的是mapper(Bean)的全类名-->
+<!--    执行sql查询语句   User.t_user ：user数据库下的t_user数据表-->
+
+<!--  由于mybatis.pojo.User已经在mybatis-config配置文件中
+使用typeAliases标签起了一个 User的别名 所以可以直接使用别名代替这个类路径  -->
+    <select id="getUserList" resultType="User">
+    select * from user.t_user
+     </select>
+
+    <!--    parameterType:参数类型  #{id}代表传入的id值-->
+    <delete id="deleteUser" parameterType="int">
+        delete from user.t_user where id= #{id}
+    </delete>
+<!--    查询个人  resultType="mybatis.pojo.Student"设置返回的类型为user对象-->
+
+<!--  问题：数据库中pwd字段名与pojo包下的user类中password属性名不一样-->
+<!--  解决方法一： pwd as password  为数据库中的pwd字段名起别名为password（与pojo中的类属性名一致） -->
+<!--    select id,name,pwd as password from user.t_user  where id=#{id}-->
+<!--    类型处理器会自动匹配字段名（别名）与pojo中类属性名一致-->
+<!--    解决方法二：结果集映射 -->
+<!--    id里面的值需要与对应的标签（select）中的resultMap的值 对应-->
+    <resultMap id="UserMap" type="User">
+<!--        将数据库中的字段名映射到pojo类属性名 -->
+<!--      column数据库中的字段名 property实体类中属性  -->
+<!--        result 可以只映射 数据库中的字段名与实体类属性名不一样 -->
+<!--        <result column="id" property="id"/>-->
+<!--        <result column="name" property="name"/>-->
+        <result column="pwd" property="password"></result>
+    </resultMap>
+<!--   resultMap的值 可以任意取 ，只是起到一个标识作用 -->
+    <select id="getUserById" parameterType="int" resultType="User" resultMap="UserMap">
+        select * from user.t_user  where id=#{id}
+    </select>
+
+    <!--  问题：数据库中pwd字段名与pojo包下的user类中password属性名不一样-->
+    <!--  结果集映射 -->
+    <!--    id里面的值需要与对应的标签（select）中的resultMap的值 对应-->
+    <resultMap id="UserMapLimit" type="User">
+        <!--        将数据库中的字段名映射到pojo类属性名 -->
+        <!--      column数据库中的字段名 property实体类中属性  -->
+        <!--        result 可以只映射 数据库中的字段名与实体类属性名不一样 -->
+        <result column="pwd" property="password"></result>
+    </resultMap>
+<!--    分页查询  parameterType参数类型 Map类型 需要使用别名传入-->
+<!--    为什么数据库中pwd字段与实体类中password属性名不一致，所以需要resultMap-->
+<!--    sql语句：从索引为startIndex开始，每页有pageSize个数据-->
+    <select id="getUserByLimit" parameterType="map" resultMap="UserMapLimit">
+        select * from user.t_user limit ${startIndex},${pageSize}
+    </select>
+
+
+<!--    添加个人信息-->
+    <insert id="addUser" parameterType="User" >
+        insert into user.t_user (id,name,pwd) value (#{id},#{name},#{pwd})
+    </insert>
+<!--    修改-->
+    <update id="updateUser" parameterType="User">
+        update user.t_user set name=#{name},pwd=#{pwd} where id=#{id} ;
+    </update>
+</mapper>

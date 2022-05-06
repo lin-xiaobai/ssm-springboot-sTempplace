@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace 绑定一个对应的Dao/mapper接口  即dao/mapper的实现类-->
+<!--namespace:接口的全类名-->
+<mapper namespace="mybatis.dao.UserMapper">
+<!--select查询语句 id对应的是方法的名字  resultType:sql语句返回值类型（结果集）对应的是mapper(Bean)的全类名-->
+<!--    执行sql查询语句   user.t_user ：user数据库下的t_user数据表-->
+    <select id="getUserList" resultType="mybatis.pojo.Student">
+    select * from user.t_user
+     </select>
+
+<!--    //    模糊查询 ：即查询字段值中含有相同的值 value:这里传的是字段值中相同的某些 字符串-->
+<!--  传递通配符%%  为了防止sql注入 我们一个在sql拼接中使用通配符 -->
+    <select id="getUserListLike" resultType="mybatis.pojo.Student">
+        select * from user.t_user where name like "%"#{value}"%"
+    </select>
+
+
+    <!--    parameterType:参数类型  #{id}代表传入的id值-->
+    <delete id="deleteUser" parameterType="int">
+        delete from user.t_user where id= #{id}
+    </delete>
+
+<!--     通过map查询指定的人(指定的那个人的（条件很多）即字段名很多 可以使用map集合 装那些条件字段名属性)  指定参数的类型为map集合-->
+    <select id="getUserByMap" parameterType="map" resultType="mybatis.pojo.Student">
+        select * from user.t_user where id=#{someperson} and name=#{name};
+    </select>
+
+<!--    查询个人  resultType="mybatis.pojo.Student"设置返回的类型为user对象-->
+    <select id="getUserById" parameterType="int" resultType="mybatis.pojo.Student">
+        select * from user.t_user where id=#{id};
+    </select>
+
+<!--    添加个人信息-->
+    <insert id="addUser" parameterType="mybatis.pojo.Student" >
+        insert into user.t_user (id,name,pwd) value (#{id},#{name},#{pwd})
+    </insert>
+<!--    修改-->
+    <update id="updateUser" parameterType="mybatis.pojo.Student">
+        update user.t_user set name=#{name},pwd=#{pwd} where id=#{id} ;
+    </update>
+<!--    修改，参数类型 为map,如果实体类中或者数据库中的表，字段参数过多的时候，可以设置为map集合-->
+<!--    修改操作时，可以通过map集合保存只需要修改的值 ，而且#{username}里面username不需要与POJO类属性名一致
+        username:需要于放入map中key的名称一致，这个可以只修改需要的字段名，不需要在sql语句中写pojo类中的所有属性名
+-->
+    <update id="updateUsserByMap" parameterType="map">
+        update user.t_user set name=#{username} where id=#{userid} ;
+    </update>
+</mapper>

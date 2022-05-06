@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.dao.TeacherMapper">
+    <resultMap id="teachers" type="teacher">
+        <result column="id" property="id"></result>
+        <result column="name" property="name"></result>
+    </resultMap>
+    <select id="getTeaches" resultMap="teachers">
+        select * from teacher
+    </select>
+
+
+<!--   方式一： 按照结果嵌套查询-->
+<!--    给部分数据库字段起别名-->
+    <select id="getTeacherById" resultMap="teachermap">
+        select s.id sid,s.name sname,t.name tname,t.id taid
+        from student s,teacher t
+        where s.tid=t.id and t.id=#{id}
+    </select>
+<!--    设置类型teacher类型 本质是teacher类型-->
+    <resultMap id="teachermap" type="teacher">
+<!--        因为数据库部分字段名已经设置了别名了 所以column的值需要使用别名 -->
+        <result property="id" column="taid"></result>
+        <result property="name" column="tname"></result>
+<!--        ofType="student" 设置接受students属性名的类型为student类型
+  JavaType是用来指定pojo中属性的类型，而ofType指定的是映射到list集合属性中pojo的类型-->
+<!--        ofType指的是teacher实体类中list<student> 的泛型类型student-->
+        <collection property="students" ofType="student">
+            <result property="id" column="sid"></result>
+            <result property="name" column="sname"></result>
+            <result property="tid" column="tid"></result>
+        </collection>
+    </resultMap>
+
+ <!--   方式二：按照查询嵌套查询-->
+    <select id="getTeacherById3" resultMap="studentmap">
+        select * from teacher where id=#{id}
+    </select>
+<!--    本质类型是teacher类型-->
+    <resultMap id="studentmap" type="teacher">
+<!-- javaType指定pojo中属性的类型  ofType指定的是映射到list集合属性中pojo的类型 即的是list集合中的泛型 select：在次查询（子查询）column：子查询的tid值    -->
+        <collection property="students" javaType="ArrayList" ofType="student" select="getStudentByTeacherId" column="id"/>
+    </resultMap>
+<!--    这个查询后的结果就是一个student类型-->
+    <select id="getStudentByTeacherId" resultType="student">
+        select * from student where tid=#{tid}
+    </select>
+</mapper>

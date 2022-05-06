@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--标签库的头文件 -->
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+
+
+    <description>自定义迭代器标签库</description>
+    <!--版本号默认为1.0-->
+    <tlib-version>1.0</tlib-version>
+    <!--简称-->
+    <short-name>mytaglib</short-name>
+    <!--uri:属性值写公司域名-->
+    <uri>http://www.youjizz.com</uri>
+
+
+    <!--自定义标签的相关信息-->
+    <tag>
+        <description>自定义迭代器标签</description>
+
+        <name>mytab</name>
+        <!--引入class类-->
+        <tag-class>com.tradition.MyIteration.MyIteration</tag-class>
+        <!--这个类的方法是打印三次Helloween Helloween可以是文本，也可以是JSP-->
+        <body-content>JSP</body-content>
+        <!--给处理类MyIteration.class加属性值-->
+        <attribute>
+            <!--属性的名字-->
+            <name>num</name>
+            <!--required：属性可选（可填属性值or不填属性值  true表示这个属性必须写属性值-->
+            <required>true</required>
+        </attribute>
+    </tag>
+    <!--告诉自定义标签写了一个将上面自定义输出文本标签的内容转换为大写的类-->
+    <tag>
+        <!--简称-->
+        <name>toUpperCase</name>
+        <!--引入class类-->
+        <tag-class>com.tradition.ToUpperCase.toUpperCase</tag-class>
+        <body-content>JSP</body-content>
+    </tag>
+
+
+    <function>
+        <description>Converts the string to all caps</description>
+        <name>caps</name>
+        <function-class>jsp2.examples.el.Functions</function-class>
+        <function-signature>java.lang.String caps( java.lang.String )</function-signature>
+    </function>
+</taglib>
+

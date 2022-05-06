@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+<form th:action="@{/student}" method="post">
+    姓名：<input type="text" name="name"/><br/>
+    班级：<input type="text" name="classroom"/><br/>
+    年龄：<input type="number" name="age" id="age" placeholder="请输入0-200之间的数字"><span id="msgAge"></span><br/>
+    学号：<input type="number" name="id" id="id" placeholder="请输入11位的学号"/><span id="msgId"></span><br/>
+    学院：<select name="college">
+    <option value="jsj">计算机学院</option>
+    <option value="ys">艺术学院</option>
+    <option value="cj">财经学院</option>
+    <option value="wy">外语学院</option>
+</select>
+    <br/>
+    专业: <input type="text" name="major"/><br/>
+    <input type="submit" value="提交"/>
+</form>
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        //当鼠标离开文本框时，处理年龄数据检验
+        $('#age').blur(function () {
+            var age=$(this).val();
+            var spantext=$('#msgAge');
+            if(age=='')return false;
+            var  ajaxValue={
+                url:"checkAge",
+                type:"GET",
+                async:true,
+                data:{"age":age},
+                dataType:"json",
+                success:function (data) {
+                    if(data.exit){
+                        //将添加span中的内容
+                        spantext.html(data.message);
+                        spantext.css("color","red");
+                    }else{
+                        spantext.html(data.message);
+                        spantext.css("color","yellow");
+                    }
+                },
+            }
+            $.ajax(ajaxValue);
+        })
+       //处理学号11位数字的问题
+       $('#id').blur(function () {
+             var id=$(this).val();
+            var ide=$('#id');
+            if(id=='')return false;
+            var msgId=$('#msgId');
+            if(id.length!=11){
+                alert("请输入正确的学号");
+                ide.val('');
+            }
+            else{
+                msgId.html("符合");
+                msgId.css("color","red");
+            }
+       })
+    })
+</script>

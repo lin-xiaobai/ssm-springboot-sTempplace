@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7e3403e0-4cc0-443e-9eb0-475fe7f636c4" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1wl2Z7JRMlBA1UL9Wx1Bv3WHehK" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../project01" />
+  </component>
+  <component name="RunManager" selected="Application.ArrayQueueDemo">
+    <configuration name="读取数据" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.SparseArray.读取数据" />
+      <module name="dataStructures" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.SparseArray.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArrayQueueDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.queu.ArrayQueueDemo" />
+      <module name="dataStructures" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.queu.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="sparseArray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.SparseArray.sparseArray" />
+      <module name="dataStructures" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.SparseArray.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ArrayQueueDemo" />
+        <item itemvalue="Application.读取数据" />
+        <item itemvalue="Application.sparseArray" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7e3403e0-4cc0-443e-9eb0-475fe7f636c4" name="Default Changelist" comment="" />
+      <created>1629018906946</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1629018906946</updated>
+      <workItem from="1629018910652" duration="20000" />
+      <workItem from="1629018947758" duration="80000" />
+      <workItem from="1629019068049" duration="3632000" />
+      <workItem from="1629022850697" duration="3398000" />
+      <workItem from="1629196362826" duration="2090000" />
+      <workItem from="1629301215767" duration="368000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1254" y="381" key="FileChooserDialogImpl" timestamp="1629301460385">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1254" y="381" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1629301460385" />
+    <state width="1088" height="447" key="GridCell.Tab.0.bottom" timestamp="1629197787440">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1088" height="447" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1629197787440" />
+    <state width="1088" height="447" key="GridCell.Tab.0.center" timestamp="1629197787440">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1088" height="447" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1629197787440" />
+    <state width="1088" height="447" key="GridCell.Tab.0.left" timestamp="1629197787438">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1088" height="447" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1629197787438" />
+    <state width="1088" height="447" key="GridCell.Tab.0.right" timestamp="1629197787440">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1088" height="447" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1629197787440" />
+    <state x="669" y="143" key="new project wizard" timestamp="1629301582190">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="669" y="143" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1629301582190" />
+  </component>
+</project>

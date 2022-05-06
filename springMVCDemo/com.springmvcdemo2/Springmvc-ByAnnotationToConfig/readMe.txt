@@ -1,0 +1,23 @@
+注解配置SpringMVC
+使用配置类和注解代替web.xml和SpringMVC配置文件的功能
+
+1、创建初始化类，代替web.xml
+在Servlet3.0环境中，容器会在类路径中查找实现javax.servlet.ServletContainerInitializer接口的类，
+如果找到的话就用它来配置Servlet容器。 Spring提供了这个接口的实现，名为
+SpringServletContainerInitializer，这个类反过来又会查找实现WebApplicationInitializer的类并将配
+置的任务交给它们来完成。Spring3.2引入了一个便利的WebApplicationInitializer基础实现，名为
+AbstractAnnotationConfigDispatcherServletInitializer，当我们的类扩展了
+AbstractAnnotationConfigDispatcherServletInitializer并将其部署到Servlet3.0容器的时候，容器会自
+动发现它，并用它来配置Servlet上下文。
+
+里面还有写js对象与json数据格式的关系
+对象转为json
+和json转为对象
+
+js的key和value都是object类型
+json对象的key要求是string类型，value是obejct类型
+
+满足json格式（js的key是字符串类型）需要将对象转为json对象
+
+如果json对象需要获取指定的属性值需要将json对象 转为js对象
+就可以通过对象名.属性获取值

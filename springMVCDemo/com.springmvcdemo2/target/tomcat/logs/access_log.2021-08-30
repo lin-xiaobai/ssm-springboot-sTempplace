@@ -1,0 +1,4 @@
+0:0:0:0:0:0:0:1 - - [30/Aug/2021:20:29:11 +0800] "GET /com.springmvcdemo2 HTTP/1.1" 302 - http-bio-8888-exec-1 0
+0:0:0:0:0:0:0:1 - - [30/Aug/2021:20:29:12 +0800] "GET /com.springmvcdemo2/ HTTP/1.1" 200 52 http-bio-8888-exec-3 581
+0:0:0:0:0:0:0:1 - - [30/Aug/2021:20:29:53 +0800] "GET /springmvcdemo2 HTTP/1.1" 302 - http-bio-8888-exec-1 0
+0:0:0:0:0:0:0:1 - - [30/Aug/2021:20:29:53 +0800] "GET /springmvcdemo2/ HTTP/1.1" 200 52 http-bio-8888-exec-3 577

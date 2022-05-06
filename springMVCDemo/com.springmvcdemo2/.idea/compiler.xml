@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springmvc_jsp" />
+        <module name="springmvc-dome1" />
+        <module name="springmvcdemo2" />
+        <module name="springmvc_RESTFul" />
+        <module name="Springmvc-ByAnnotationToConfig" />
+        <module name="springmvc-HttpMessageConverter" />
+        <module name="springmvc-dome03" />
+        <module name="springmvc_student" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="springmvc-requestBody" target="1.9" />
+      <module name="springmvc_homeWork3" target="1.8" />
+      <module name="springmvc_homework3" target="1.8" />
+      <module name="springmvcdemo04" target="1.9" />
+      <module name="springmvcdemo2" target="1.9" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

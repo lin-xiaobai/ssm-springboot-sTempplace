@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--xmlns:th 是thymeleaf语法-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>首页</h1><br/>
+<!--<a href="/target">表示访问绝对路径-->
+<!--超链接里的路径 绝对路径分为浏览器解析和服务器解析的-->
+<!--超链接写的绝对路径就是浏览器解析的-->
+<!--“/”表示从localhost的8080端口下访问 ，
+就是说少一个上下文路径:就是配置tomcat时的application context里面的值 即 /springMVC-->
+<!--
+    绝对路径:缺点：可以修改上下文路径
+<a href="/springMVC/target">访问指定页面页面target.html</a>-->
+
+<!--使用thymeleaf语法 解析 属性
+作用：当thymeleaf语法 检测到 绝对路径中的 /target 就会自动添加上下文路径/springMVC
+-->
+<a th:href="@{/target}">访问指定页面页面target.html</a>
+
+
+<!--测试requestMapping注解在类上和方法上 -->
+<!--访超链接中的绝对路径需要写类上的requestMapping注解的值和方法上的注解的值-->
+<a th:href="@{/text/success}">测试requestMapping注解在类上和方法上</a>
+
+
+<!--测试requestMapping注解上value为数组时
+超链接中路径符合requestMapping注解上value数组的 其中一个值即可
+-->
+<!--访问路径为 /上下文路径（springMVC）/suceess-->
+<a th:href="@{/success}">测试requestMapping注解上value数组-》suceess</a>
+<!--访问路径为 /上下文路径（springMVC）/test-->
+<a th:href="@{/test}">测试requestMapping注解上value数组-》test</a><br/>
+
+<!--测试requestMapping注解上 method属性的post和get请求  需要在控制器上添加method属性-->
+<a th:href="@{/test}">测试测试requestMapping注解上method为get</a>
+<form th:action="@{/success}" method="post">
+    <input type="submit" value="测试requestMapping注解上meehod属性为post">
+</form><br/>
+
+<!--测试处理指定请求方式的控制方法 -->
+<a th:href="@{/testGetMapping}">测试requestMapping的派生注解-->处理请求方式get</a>
+<!--超链接的请求方式是get请求，不支持post请求-->
+<!--<a th:href="@{/testMappingpost}">测试requestMapping的派生注解&ndash;&gt;处理请求方式post</a>-->
+<form th:action="@{/testMappingpost}" method="post">
+    <input type="submit" value="测试requestMapping的派生注解处理请求方式post">
+</form>
+
+<!--测试处理请求地址中必须包含指定的参数要求
+请求地址中必须出现username属性，并且属性值为root
+和pwd值(控制器中要求)不能等于1234
+-->
+<a th:href="@{/testParams?username=root&pwd=1234}">测试处理请求地址中必须包含指定的参数要求</a>
+<!--也可以写为-->
+<!--<a th:href="@{/testParams(username='root'&pwd=1234)}">测试处理请求地址中必须包含指定的参数要求</a>-->
+
+<!--测试ant风格的路径-->
+<!--？表示任意的字符  除了“/”-->
+<!--<a th:href="@{/aaa}">测试ant风格的路径&ndash;&gt;“？”</a>-->
+<!--//    *表示任意的0个或多个字符-->
+<!--<a th:href="@{/aa}">测试ant风格的路径&ndash;&gt;“*”</a>-->
+<!--//    **表示任意的一层或者多层-->
+<a th:href="@{/a/a/a/aa/a}">测试ant风格的路径</a>
+
+<!--路径中的占位符  restful风格  当请求路径中的某些数据通过
+路径的方式传输到服务器时，可以在相对应的@RequestMapping注解的value属性
+中通过占位符{xxx}表示传输的数据，在通过@PathVariable注解，将
+占位符表示的数据赋值给控制器方法的形参
+
+意思就是：/username?id=2 里面的属性名 省略 直接在请求路径中添加属性值
+/username/2
+-->
+
+<a th:href="@{/testpath/1/admin}">测试路径中的占位符</a><br/>
+</body>
+</html>

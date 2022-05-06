@@ -1,0 +1,6 @@
+com\springmvc\config\SpringConfig.class
+com\springmvc\config\WebConfig.class
+com\springmvc\interceptor\TestInterceptor.class
+com\springmvc\controller\testController.class
+com\springmvc\bean\UserBean.class
+com\springmvc\config\WebInit.class

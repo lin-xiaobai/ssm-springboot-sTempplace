@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.dao.StudentMapper">
+<!--  resultType的值写的是别名 别名需要在核心配置文件xml文件中配置   -->
+
+<!--    查询所有的学生-->
+<!--    根据查询出来的学生的tid，寻找对应的老师 子查询-->
+
+    <select id="getStudents"  resultMap="StudentMap">
+        select * from user.student
+    </select>
+    <resultMap id="StudentMap" type="student">
+
+<!--        方式一：按照 嵌套查询 （子查询）处理-->
+<!--        数据库的字段名为id 对应实体类的属性名id-->
+        <result property="id" column="id"></result>
+        <result property="name" column="name"></result>
+<!--        复杂的属性，需要单独 处理 -->
+<!--        对象association-->
+<!--        集合 collection-->
+        <!--  将数据库中的tid映射 到实体类中的teacher属性    -->
+<!--    学生类中 是多个学生对应一个老师（关联） -->
+<!--        数据库中的tid 对应的是实体类中的teacher对象 javaType：设置类型为teacher对象（别名） -->
+        <association property="teacher" column="tid" javaType="teacher" select="getTeacher"></association>
+    </resultMap>
+    <select id="getTeacher" resultType="teacher">
+    select *from teacher where id=#{id}
+ </select>
+
+
+<!--    方式二：按照结果集查询（关联表）处理-->
+<!--    t.name tname:查询数据表的别名为t 字段名为name 别名为tname-->
+    <select id="getStudents2" resultMap="teacherMap">
+        select s.id sid,s.name sname,t.name tname from student s ,teacher t
+        where s.tid=t.id
+    </select>
+<!--    type:写的是 结果集的类型-->
+    <resultMap id="teacherMap" type="student">
+<!--        因为上面的sql语句已经将字段名设置有别名了，所以这里的column需要设置为数据库的别名-->
+        <result property="id" column="sid"></result>
+        <result property="name" column="sname"></result>
+<!--        复杂的属性，需要单独 处理 -->
+<!--        直接将javaType 类型设置为 teacher类型 不需要设置 数据库中对应的字段名，系统会自动去匹配 -->
+        <association property="teacher" javaType="teacher">
+            <result property="name" column="tname"></result>
+        </association>
+    </resultMap>
+
+</mapper>

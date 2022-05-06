@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试RESTFul风格</title>
+</head>
+<body>
+<a th:href="@{/users}">查询所有人的信息</a>
+<a th:href="@{/user/1}">根据id查询用户信息</a>
+<!--添加信息需要表单，表单的input的name属性名需要和bean中的user类中的属性名或者 控制器的形参名一样-->
+<form th:action="@{/user}" method="post">
+    用户名：<input type="text" name="username"><br>
+    密码：<input type="password" name="pwd"><br>
+    <input type="submit" value="提交">
+</form>
+<!--修改信息，如果请求方式设置为put请求 如果没有配置的话会默认使用get请求
+需要做：1.在web.xml文件中设置HiddenHttpMethodFilter过滤器
+2.表单的请求方式设置为post请求
+3.设置一个隐藏的input标签，name的属性是一个常量：_method 还有属性值设置为put（大小写都可以） 作用：对当前的请求进行转换
+-->
+<form th:action="@{/user}" method="post">
+    <input type="hidden" name="_method" value="PUT">
+    修改用户名：<input type="text" name="username"><br>
+    修改密码：<input type="password" name="pwd"><br>
+    <input type="submit" value="修改">
+</form>
+</body>
+</html>

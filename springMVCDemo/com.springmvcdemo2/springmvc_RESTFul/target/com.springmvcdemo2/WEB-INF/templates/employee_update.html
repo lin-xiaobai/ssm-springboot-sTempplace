@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/empoyee}" method="post">
+<!--    因为是修改，所以需要设置请求方式为put请求-->
+    <input type="hidden" name="_method" value="put">
+<!--    设置 回显数据为id的文本框  因为Employee类中有id属性值-->
+    <input type="hidden" name="id" th:value="${employee.id}">
+<!--    从model域中通过key（employee）获取数据 回显数据-->
+    lastName:<input type="text" name="lastName" th:value="${employee.lastName}"><br>
+    email:<input type="text" name="email" th:value="${employee.email}"><br>
+<!--  field:表示字段  设置后，会自动在radio单选框打钩 属性值与回显的数据相同  -->
+<!--    拿回显的数据与input属性上的name属性相比较，如果是相同是则是 在相对应的文本框上设置
+    checked=“checked”
+-->
+    gender:<input type="radio" name="gender" value="1" th:field="${employee.gender}">male
+   <input type="radio" name="gender" value="0" th:field="${employee.gender}">female<br>
+   <input type="submit" value="提交">
+</form>
+
+</body>
+</html>

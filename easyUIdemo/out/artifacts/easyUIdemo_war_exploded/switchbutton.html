@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="js/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="js/themes/icon.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$("#sb").switchbutton(
+				{onText:"开", offText:"关"
+				,onChange: switchChange//绑定事件和处理事件的函数。事件编程模型：在哪里、什么时候触发事件，事件发生后调用哪个函数处理
+				}//js对象传递要修改组件的哪些属性,绑定事件的处理函数
+		);
+	});
+	function switchChange(val){
+		alert(val);
+	}
+	function toggle(){
+		$('#sb').switchbutton('disable');
+	}
+	function enableSwitch(){
+		$('#sb').switchbutton('enable');
+	}
+	</script>
+</head>
+<body>
+	<input type="button" value="禁用开关" onclick="toggle()"/>
+	<input type="button" value="启用开关" onclick="enableSwitch()"/>
+	<input id="sb"/>
+</body>
+</html>

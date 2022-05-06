@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:action="@{/book/id}" method="post">
+        <input type="text" name="bookID"></br>
+        <input type="submit">
+    </form>
+    <a th:href="@{/book/all}">查询全部信息</a>
+
+
+    <form th:action="@{/img/id}">
+        <input type="text" name="id"/>
+        <input type="submit">
+    </form>
+</body>
+</html>

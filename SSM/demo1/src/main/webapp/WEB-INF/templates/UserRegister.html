@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+
+    <form th:action="@{/user/add}" method="post" >
+        用户：<input type="text" name="name" id="checkUsername"/><span id="msg1"></span><br/>
+        密码：<input type="text" name="password"><br/>
+        电话：<input type="text" name="telephone" id="checkUserTelemphone"/><span id="msg2"></span><br/>
+
+        <input type="submit"/>
+    </form>
+    </div>
+
+</body>
+    <script type="text/javascript">
+
+        // blur失去焦点事件
+        $("#checkUsername").blur(function () {
+            // 获取文本框元素
+            var name = $(this).val();
+            //获取span元素
+            var msg1 = $("#msg1");
+            //当用户名为空时
+            if(name==''){
+                return false;
+            }
+            $.ajax({
+                type:"POST",
+                url:"/user/checkName",
+                data:{"name":name},
+                dataType:"json",
+                success:function (data) {
+                    console.log(data);
+                    if (data.success){
+                        // 乱码问题
+                        msg1.html("用户名已经存在")
+                        // msg1.html(data.success);
+                        msg1.css("color","red");
+                    }else if (data.success==false){
+                        msg1.html("可以使用该用户名");
+                        msg1.css("color","yellow");
+                    }
+                }
+            })
+        })
+        $("#checkUserTelemphone").blur(function () {
+        // 获取文本框元素
+        var telephone = $(this).val();
+        //获取span元素
+        var msg2 = $("#msg2");
+       console.log(telephone);
+        //当用户名为空时
+        if(telephone==''){
+            return false;
+        }
+        $.ajax({
+            type:"POST",
+            url:"/user/checkTelephone",
+            data:{"telephone":telephone},
+            dataType:"json",
+            success:function (data) {
+                console.log(data);
+                if (data.success){
+                    // 乱码问题
+                    msg2.html("号码已经存在")
+                    // msg1.html(data.success);
+                    msg2.css("color","red");
+                }else if (data.success==false){
+                    msg2.html("可以使用号码");
+                    msg2.css("color","yellow");
+                }
+            }
+        })
+
+        })
+    </script>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>成功</p>
+<!--通过themeleaf语句将请求域中用key获取value-->
+<p th:text="${testRequestByServletAPI}"></p>
+<p th:text="${testModelAndView}"></p>
+<p th:text="${testModel}"></p>
+<p th:text="${testmap}"></p>
+<p th:text="${testmodelmap}"></p>
+<!--通过themeleaf语法往session域中取数据 通过session点键名-->
+<p th:text="${session.testsessionAPI}"></p>
+<!--通过themeleaf语法往application域中取数据 通过application点键名-->
+<p th:text="${application.testapplication}"></p>
+</body>
+</html>
